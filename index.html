@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お申し込みフォーム | DRMランチパッケージ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-danger: #CC0000;
+            --color-danger-dark: #990000;
+            --color-black: #1A1A1A;
+            --color-text: #333333;
+            --color-gray: #666666;
+            --color-light-gray: #E8E8E8;
+            --color-white: #FFFFFF;
+            --color-bg-light: #F8F8F8;
+            --color-border: #DDDDDD;
+            --color-gold: #D4AF37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--color-bg-light);
+            color: var(--color-text);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1A1A1A 0%, #333333 100%);
+            color: var(--color-white);
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-family: 'Archivo Black', 'Noto Sans JP', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Product Summary */
+        .product-summary {
+            background: var(--color-white);
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 3px solid var(--color-gold);
+            border-radius: 5px;
+        }
+
+        .product-summary h2 {
+            color: var(--color-danger);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .product-summary .price {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--color-danger);
+            margin: 20px 0;
+        }
+
+        .product-summary .price-note {
+            text-align: center;
+            color: var(--color-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h3 {
+            color: var(--color-black);
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            color: var(--color-black);
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .form-group label .required {
+            color: var(--color-danger);
+            margin-left: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: 2px solid var(--color-border);
+            border-radius: 3px;
+            font-family: 'Noto Sans JP', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-danger);
+        }
+
+        .form-group .help-text {
+            font-size: 0.85rem;
+            color: var(--color-gray);
+            margin-top: 8px;
+        }
+
+        /* Payment Method Display */
+        .payment-display {
+            background: #FFF9E6;
+            border: 2px solid var(--color-gold);
+            padding: 20px;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        .payment-display .label {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+            margin-bottom: 10px;
+        }
+
+        .payment-display .method {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--color-black);
+        }
+
+        /* Submit Button */
+        .submit-button {
+            width: 100%;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--color-white);
+            background: linear-gradient(135deg, var(--color-danger) 0%, var(--color-danger-dark) 100%);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 40px;
+            font-family: 'Noto Sans JP', sans-serif;
+            box-shadow: 0 4px 15px rgba(204, 0, 0, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(204, 0, 0, 0.4);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        /* Notice Box */
+        .notice-box {
+            background: var(--color-bg-light);
+            border-left: 5px solid var(--color-danger);
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .notice-box h4 {
+            color: var(--color-danger);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .notice-box ul {
+            margin-left: 20px;
+        }
+
+        .notice-box li {
+            margin-bottom: 10px;
+            color: var(--color-text);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-black);
+            color: var(--color-white);
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: var(--color-white);
+            text-decoration: underline;
+            margin: 0 15px;
+        }
+
+        footer a:hover {
+            color: var(--color-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            .form-container {
+                padding: 25px 20px;
+            }
+
+            .product-summary {
+                padding: 20px;
+            }
+
+            .product-summary .price {
+                font-size: 2rem;
+            }
+
+            .submit-button {
+                font-size: 1.1rem;
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>DRMランチパッケージ</h1>
+            <p>お申し込みフォーム</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Product Summary -->
+        <div class="product-summary">
+            <h2>DRMランチパッケージ</h2>
+            <p style="text-align: center; margin: 15px 0;">AI × UTAGE × プロの職人芸で、<br>お前の時間を買い戻せ。</p>
+            <div class="price">¥39,800</div>
+            <p class="price-note">（税込・銀行振込一括払い）</p>
+        </div>
+
+        <!-- Form Container -->
+        <div class="form-container">
+            <h3>申し込み情報を入力してください</h3>
+
+            <form action="https://utage-system.com/p/XXXXXXXXX" method="POST" id="applicationForm">
+                <!-- 氏名 -->
+                <div class="form-group">
+                    <label for="name">
+                        お名前
+                        <span class="required">*必須</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        required 
+                        placeholder="例：山田太郎"
+                    >
+                    <p class="help-text">姓名の間にスペースを入れてください</p>
+                </div>
+
+                <!-- メールアドレス -->
+                <div class="form-group">
+                    <label for="email">
+                        メールアドレス
+                        <span class="required">*必須</span>
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        placeholder="例：example@email.com"
+                    >
+                    <p class="help-text">振込口座情報がこちらのメールアドレスに届きます</p>
+                </div>
+
+                <!-- 支払方法（表示のみ） -->
+                <div class="form-group">
+                    <label>お支払い方法</label>
+                    <div class="payment-display">
+                        <p class="label">お支払い方法</p>
+                        <p class="method">銀行振込一括払い</p>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-button">
+                    銀行振込で申し込み、口座情報を受け取る
+                </button>
+            </form>
+
+            <!-- Notice Box -->
+            <div class="notice-box">
+                <h4>⚠ お申し込みの流れ</h4>
+                <ul>
+                    <li>このフォームを送信すると、ご入力いただいたメールアドレス宛に<strong>振込口座情報</strong>が届きます。</li>
+                    <li>記載された口座にお振込みいただくことで、正式に申し込みが完了します。</li>
+                    <li>入金確認後、<strong>ヒアリングシート</strong>をお送りいたします。</li>
+                    <li>ご不明点がございましたら、info@sakimura.info までお問い合わせください。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 15px;">
+                <a href="https://sakimura-tokushohou.vercel.app/" target="_blank">特定商取引法に基づく表記</a>
+                <a href="https://sakimura-privacy.vercel.app/" target="_blank">プライバシーポリシー</a>
+            </p>
+            <p>&copy; 2026 EZ企画合同会社. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // フォームバリデーション
+        document.getElementById('applicationForm').addEventListener('submit', function(e) {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            if (!name || !email) {
+                e.preventDefault();
+                alert('すべての必須項目を入力してください。');
+                return false;
+            }
+
+            // メールアドレスの簡単なバリデーション
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                e.preventDefault();
+                alert('正しいメールアドレスを入力してください。');
+                return false;
+            }
+
+            // 確認ダイアログ
+            const confirmed = confirm(
+                'このメールアドレスに振込口座情報が送信されます。\n\n' +
+                email + '\n\n' +
+                'よろしいですか？'
+            );
+
+            if (!confirmed) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // 入力フィールドのフォーカス時の視覚フィードバック
+        const inputs = document.querySelectorAll('input[type="text"], input[type="email"]');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+                this.parentElement.style.transition = 'transform 0.2s ease';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
