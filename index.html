@@ -286,7 +286,7 @@
         <div class="form-container">
             <h3>申し込み情報を入力してください</h3>
 
-            <form action="https://utage-system.com/p/XXXXXXXXX" method="POST" id="applicationForm">
+            <form action="https://utage-system.com/r/zTb1WIbphTJ3/store" method="POST" id="applicationForm">
                 <!-- 氏名 -->
                 <div class="form-group">
                     <label for="name">
@@ -305,16 +305,17 @@
 
                 <!-- メールアドレス -->
                 <div class="form-group">
-                    <label for="email">
+                    <label for="mail">
                         メールアドレス
                         <span class="required">*必須</span>
                     </label>
                     <input 
                         type="email" 
-                        id="email" 
-                        name="email" 
+                        id="mail" 
+                        name="mail" 
                         required 
                         placeholder="例：example@email.com"
+                        autocomplete="email"
                     >
                     <p class="help-text">振込口座情報がこちらのメールアドレスに届きます</p>
                 </div>
@@ -341,7 +342,7 @@
                     <li>このフォームを送信すると、ご入力いただいたメールアドレス宛に<strong>振込口座情報</strong>が届きます。</li>
                     <li>記載された口座にお振込みいただくことで、正式に申し込みが完了します。</li>
                     <li>入金確認後、<strong>ヒアリングシート</strong>をお送りいたします。</li>
-                    <li>ご不明点がございましたら、<a href="mailto:info@sakimura.info" style="color: var(--color-danger); text-decoration: underline;">info@sakimura.info</a> までお問い合わせください。</li>
+                    <li>ご不明点がございましたら、<a href="/cdn-cgi/l/email-protection#ddb4b3bbb29daebcb6b4b0a8afbcf3b4b3bbb2" style="color: var(--color-danger); text-decoration: underline;"><span class="__cf_email__" data-cfemail="a6cfc8c0c9e6d5c7cdcfcbd3d4c788cfc8c0c9">[email&#160;protected]</span></a> までお問い合わせください。</li>
                 </ul>
             </div>
         </div>
@@ -357,11 +358,11 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // フォームバリデーション
         document.getElementById('applicationForm').addEventListener('submit', function(e) {
             const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
+            const email = document.getElementById('mail').value.trim();
 
             if (!name || !email) {
                 e.preventDefault();
@@ -391,8 +392,4 @@
         });
 
         // 入力フィールドのフォーカス時の視覚フィードバック
-        const inputs = document.querySelectorAll('input[type="text"], input[type="email"]');
-        inputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'translateY(-2px)';
-                this.parentElement.style.transition = 'trans
+        const inputs = document.querySelectorAll('input[type="text"], input[
